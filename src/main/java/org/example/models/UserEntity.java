@@ -24,5 +24,7 @@ public class UserEntity extends AbstractEntity{
     private Instant birth;
     @Column
     private Boolean male;
+    @Column
+    private String email;
 
 }

@@ -14,6 +14,7 @@ public class UserRequest {
     private String username;
     private String password;
     private String passwordRepeat;
+    private String email;
     private Instant birth;
     private Boolean male; // true - man / false - woman
 

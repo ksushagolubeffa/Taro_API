@@ -27,7 +27,8 @@ public class UserServiceImpl implements UserService {
                         request.getUsername(),
                         request.getPassword(),
                         request.getBirth(),
-                        request.getMale()));
+                        request.getMale(),
+                        request.getEmail()));
         return toResponse.apply(user);
     }
 

@@ -13,7 +13,7 @@ import lombok.*;
 public class FriendLoveMatcher {
 
     private String zodiac;
-    private Integer val1;
-    private Integer val2;
+    private Integer love;
+    private Integer friendship;
 
 }

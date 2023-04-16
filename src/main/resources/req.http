@@ -1,0 +1,11 @@
+POST http://localhost:8080/user/register
+Content-Type: application/json
+
+{
+  "username": "Ksenia",
+  "password": "12345",
+  "passwordRepeat": "12345",
+  "email": "ksusha-golubeffa@mail.ru",
+  "birth": "09.12.2003",
+  "male": false
+}

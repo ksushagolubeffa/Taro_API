@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
-import java.time.Instant;
+import java.util.Date;
 
 @Data
 @AllArgsConstructor
@@ -21,7 +21,7 @@ public class UserEntity extends AbstractEntity{
     @Column
     private String password;
     @Column
-    private Instant birth;
+    private String birth;
     @Column
     private Boolean male;
     @Column

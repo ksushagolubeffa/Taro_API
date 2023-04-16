@@ -4,7 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.Instant;
+import java.util.Date;
 
 @Data
 @AllArgsConstructor
@@ -15,7 +15,7 @@ public class UserRequest {
     private String password;
     private String passwordRepeat;
     private String email;
-    private Instant birth;
+    private String birth;
     private Boolean male; // true - man / false - woman
 
 }

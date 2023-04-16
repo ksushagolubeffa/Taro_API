@@ -27,13 +27,12 @@ public class DataBaseConfig {
 
     @Bean
     public DataSource dataSource(){
-        return new HikariDataSource();
+        return new HikariDataSource(hikariConfig());
     }
 
     @Bean
     public HikariConfig hikariConfig(){
         HikariConfig config = new HikariConfig();
-        config.setDataSource(dataSource());
         config.setJdbcUrl(propertySource.getUrl());
         config.setUsername(propertySource.getUsername());
         config.setPassword(propertySource.getPassword());
@@ -52,10 +51,11 @@ public class DataBaseConfig {
 
     private Properties hibernateProperties() {
         Properties properties = new Properties();
-        properties.setProperty("hibernate.ddl.auto", "create");
+        //properties.setProperty("hibernate.ddl.auto", "create-drop");
+        properties.setProperty("hbm2dll.auto", "create");
         properties.setProperty("hibernate.dialect", "org.hibernate.dialect.PostgreSQL95Dialect");
         properties.setProperty("hibernate.show_sql", "true");
-        properties.setProperty("hibernate.enable_lazy_load_no_trans", "true");
+        //properties.setProperty("hibernate.enable_lazy_load_no_trans", "false");
         return properties;
     }
 
@@ -63,12 +63,14 @@ public class DataBaseConfig {
     public LocalContainerEntityManagerFactoryBean entityManagerFactory(){
         HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
         vendorAdapter.setDatabase(Database.POSTGRESQL);
+        vendorAdapter.setGenerateDdl(true);
+        vendorAdapter.setShowSql(true);
         LocalContainerEntityManagerFactoryBean containerEntityManagerFactoryBean =
                 new LocalContainerEntityManagerFactoryBean();
+        containerEntityManagerFactoryBean.setDataSource(dataSource());
         containerEntityManagerFactoryBean.setJpaVendorAdapter(vendorAdapter);
         containerEntityManagerFactoryBean.setPackagesToScan("org.example.models");
         containerEntityManagerFactoryBean.setJpaProperties(hibernateProperties());
-        containerEntityManagerFactoryBean.setDataSource(dataSource());
         return containerEntityManagerFactoryBean;
     }
 

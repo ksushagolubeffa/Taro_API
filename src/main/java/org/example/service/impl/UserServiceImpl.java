@@ -8,6 +8,7 @@ import org.example.repository.UserRepository;
 import org.example.service.UserService;
 import org.springframework.stereotype.Component;
 
+import java.util.UUID;
 import java.util.function.Function;
 
 @Component
@@ -34,6 +35,11 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserResponse doLogin(String login, String password) {
-        return toResponse.apply(repository.findUserEntitiesByPasswordAndUsername(login, password));
+        if (repository.findUserEntityByUsernameAndPassword(login, password) == null){
+            System.out.println(repository.findById(UUID.fromString("2132c95a-2e60-4989-8139-b9bc4341a5b6")).get().toString());
+            throw new RuntimeException();
+        }else {
+            return toResponse.apply(repository.findUserEntityByUsernameAndPassword(login, password));
+        }
     }
 }

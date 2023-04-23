@@ -8,10 +8,10 @@ import java.util.UUID;
 public interface UserRepository extends JpaRepository<UserEntity, UUID> {
 
     /**
-     * @param password -> inner pass in database
      * @param username -> public user info
+     * @param password -> inner pass in database
      * @return -> UserEntity -> after will be mapped to UserResponse in dto package
      */
-    UserEntity findUserEntitiesByPasswordAndUsername(String password, String username);
+    UserEntity findUserEntityByUsernameAndPassword(String username, String password);
 
 }

@@ -3,10 +3,8 @@ package org.example.api.controller;
 import lombok.RequiredArgsConstructor;
 import org.example.api.TaroAPI;
 import org.example.models.dto.TaroResponse;
-import org.example.service.TaroService;
 import org.example.service.impl.TaroServiceImpl;
 import org.springframework.web.bind.annotation.RestController;
-
 import java.util.List;
 import java.util.UUID;
 

@@ -15,6 +15,8 @@ public class UserResponse {
 
     private UUID id;
     private String username;
+    private String email;
+    private String password;
     private String birth;
     private Boolean male; // true - man / false - woman
 

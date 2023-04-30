@@ -1,1 +1,1 @@
-GET http://localhost:8080/user/login/Ksenia/12345
+GET http://localhost:8080/user/login/aabbcc/12345ae

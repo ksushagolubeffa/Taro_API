@@ -2,10 +2,10 @@ POST http://localhost:8080/user/register
 Content-Type: application/json
 
 {
-  "username": "ksushagolubeffa",
+  "username": "aabbcc",
   "password": "12345ae",
-  "passwordRepeat": "12345ae",
-  "email": "ksushagolubeffa@mail.ru",
+  "passwordRepeat": "54321",
+  "email": "aabbcc@mail.ru",
   "birth": "09.12.2003",
   "male": false
 }

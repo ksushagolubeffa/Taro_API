@@ -18,7 +18,7 @@ public class UserServiceImpl implements UserService {
     private final UserRepository repository;
 
     private final Function<UserEntity, UserResponse> toResponse = ent -> {
-        return new UserResponse(ent.getUuid(), ent.getUsername(), ent.getBirth(), ent.getMale());
+        return new UserResponse(ent.getUuid(), ent.getUsername(), ent.getEmail(), ent.getPassword(), ent.getBirth(), ent.getMale());
     };
 
     @Override

@@ -41,14 +41,6 @@ public class DataBaseConfig {
         return config;
     }
 
-    /*@Bean         Deprecated for a moment
-    SpringLiquibase liquibase(){
-        SpringLiquibase liquibase = new SpringLiquibase();
-        liquibase.setChangeLog("");
-        liquibase.setDataSource(dataSource());
-        return liquibase;
-    }*/
-
     private Properties hibernateProperties() {
         Properties properties = new Properties();
         //properties.setProperty("hibernate.ddl.auto", "create-drop");

@@ -18,7 +18,7 @@ import java.util.stream.Collectors;
 public class TaroServiceImpl implements TaroService {
 
     private final Function<TaroEntity, TaroResponse> fromEntityToResponse = ent -> {
-        if (ent.getLasso().equals("higher")){
+        if (ent.getLasso().equals("high")){
             return TaroResponse.builder()
                     .description(ent.getDescription())
                     .dignity(ent.getDignity())

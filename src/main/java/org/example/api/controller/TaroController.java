@@ -15,8 +15,8 @@ public class TaroController implements TaroAPI {
     private final TaroServiceImpl service;
 
     @Override
-    public TaroResponse getOneCard(UUID uuid) {
-        return service.getOneCardById(uuid);
+    public TaroResponse getOneCard(Long id) {
+        return service.getOneCardById(id);
     }
 
     @Override

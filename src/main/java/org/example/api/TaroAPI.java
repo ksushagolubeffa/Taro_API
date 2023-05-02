@@ -13,11 +13,11 @@ import java.util.UUID;
 public interface TaroAPI {
 
     @GetMapping("/{id}")
-    TaroResponse getOneCard(@PathVariable("id") UUID uuid);
+    TaroResponse getOneCard(@PathVariable("id")Long id);
 
     @GetMapping("/getAll")
     List<TaroResponse> getAll();
 
-    @GetMapping("/{count}")
+    @GetMapping("/count/{count}")
     List<TaroResponse> getWithRandomCount(@PathVariable("count") Integer count);
 }

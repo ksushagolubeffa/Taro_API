@@ -43,7 +43,7 @@ public class DataBaseConfig {
 
     private Properties hibernateProperties() {
         Properties properties = new Properties();
-        //properties.setProperty("hibernate.ddl.auto", "create-drop");
+//        properties.setProperty("hibernate.ddl.auto", "create-drop");
         properties.setProperty("hbm2dll.auto", "create");
         properties.setProperty("hibernate.dialect", "org.hibernate.dialect.PostgreSQL95Dialect");
         properties.setProperty("hibernate.show_sql", "true");

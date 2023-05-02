@@ -8,7 +8,7 @@ import java.util.UUID;
 
 public interface TaroService {
 
-    TaroResponse getOneCardById(UUID uuid);
+    TaroResponse getOneCardById(Long id);
     List<TaroResponse> getAllCards();
     List<TaroResponse> getRandomCountOfCards(Integer countOfCards);
 

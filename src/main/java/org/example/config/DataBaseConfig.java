@@ -44,10 +44,10 @@ public class DataBaseConfig {
     private Properties hibernateProperties() {
         Properties properties = new Properties();
 //        properties.setProperty("hibernate.ddl.auto", "create-drop");
-        properties.setProperty("hbm2dll.auto", "create");
         properties.setProperty("hibernate.dialect", "org.hibernate.dialect.PostgreSQL95Dialect");
         properties.setProperty("hibernate.show_sql", "true");
-        //properties.setProperty("hibernate.enable_lazy_load_no_trans", "false");
+        properties.setProperty("hibernate.current_session_context_class", "thread");
+        properties.setProperty("hibernate.enable_lazy_load_no_trans", "false");
         return properties;
     }
 

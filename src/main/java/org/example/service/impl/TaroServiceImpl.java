@@ -16,21 +16,21 @@ import java.util.stream.Collectors;
 @Component
 public class TaroServiceImpl implements TaroService {
 
-    private final Function<TaroEntity, TaroResponse> fromEntityToResponse = ent -> {
-        if (ent.getLasso().equals("high")){
+    private Function<TaroEntity, TaroResponse> fromEntityToResponse = ent -> {
+        if (ent.getLasso().equals("low")){
             return TaroResponse.builder()
                     .description(ent.getDescription())
                     .dignity(ent.getDignity())
                     .lasso(ent.getLasso())
                     .name(ent.getName())
-                    /*.suit(ent.getSuit()) nothing here */
+                    .suit(null)
                     .build();
         }else {
             return TaroResponse.builder()
                     .description(ent.getDescription())
                     .dignity(ent.getDignity())
                     .lasso(ent.getLasso())
-                    /*.name(ent.getName()) nothing here */
+                    .name(null)
                     .suit(ent.getSuit())
                     .build();
         }
@@ -40,14 +40,23 @@ public class TaroServiceImpl implements TaroService {
 
     @Override
     public TaroResponse getOneCardById(Long id) {
-        return fromEntityToResponse.apply(repository.getById(id));
+        TaroEntity byId = repository.findById(id).get();
+        return new TaroResponse(byId.getDignity(),
+                byId.getDescription(),
+                byId.getLasso(),
+                byId.getSuit(),
+                byId.getName());
     }
 
     @Override
     public List<TaroResponse> getAllCards() {
         List<TaroResponse> responses = new ArrayList<>();
         for (TaroEntity taroEntity : repository.findAll()) {
-            responses.add(fromEntityToResponse.apply(taroEntity));
+            responses.add(new TaroResponse(taroEntity.getDignity(),
+                    taroEntity.getDescription(),
+                    taroEntity.getLasso(),
+                    taroEntity.getSuit(),
+                    taroEntity.getName()));
         }
         return responses;
     }

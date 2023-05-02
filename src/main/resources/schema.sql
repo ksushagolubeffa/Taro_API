@@ -162,3 +162,6 @@ insert into taro_card_table (id, description, dignity, lasso, name, suit)
 
 
 drop table taro_card_table;
+
+delete from taro_card_table
+where id > 89

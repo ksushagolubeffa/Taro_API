@@ -42,4 +42,25 @@ public class UserServiceImpl implements UserService {
             return toResponse.apply(repository.findUserEntityByUsernameAndPassword(login, password));
         }
     }
+
+    @Override
+    public UserResponse doUpdate(UserRequest request) {
+        UserEntity userEntityByUsernameAndPassword = repository.findUserEntityByUsernameAndPassword(request.getUsername(), request.getPassword());
+        userEntityByUsernameAndPassword.setPassword(request.getPassword());
+        userEntityByUsernameAndPassword.setUsername(request.getUsername());
+        userEntityByUsernameAndPassword.setBirth(request.getBirth());
+        userEntityByUsernameAndPassword.setMale(request.getMale());
+        userEntityByUsernameAndPassword.setEmail(request.getEmail());
+        repository.save(userEntityByUsernameAndPassword);
+        return toResponse.apply(userEntityByUsernameAndPassword);
+    }
+
+    @Override
+    public UserResponse getByEmail(String email){
+        if (repository.findUserEntityByEmail(email) == null){
+            throw new RuntimeException();
+        }else {
+            return toResponse.apply(repository.findUserEntityByEmail(email));
+        }
+    }
 }

@@ -41,7 +41,7 @@ public class TaroServiceImpl implements TaroService {
     @Override
     public TaroResponse getOneCardById(Long id) {
         TaroEntity byId = repository.findById(id).get();
-        return new TaroResponse(byId.getDignity(),
+        return new TaroResponse(id, byId.getDignity(),
                 byId.getDescription(),
                 byId.getLasso(),
                 byId.getSuit(),
@@ -52,13 +52,23 @@ public class TaroServiceImpl implements TaroService {
     public List<TaroResponse> getAllCards() {
         List<TaroResponse> responses = new ArrayList<>();
         for (TaroEntity taroEntity : repository.findAll()) {
-            responses.add(new TaroResponse(taroEntity.getDignity(),
+            responses.add(new TaroResponse(taroEntity.getId(),
+                    taroEntity.getDignity(),
                     taroEntity.getDescription(),
                     taroEntity.getLasso(),
                     taroEntity.getSuit(),
                     taroEntity.getName()));
         }
         return responses;
+    }
+
+    @Override
+    public List<TaroResponse> getCardsById(List<Long> listId){
+        List<TaroResponse> result = new ArrayList<>();
+        for (Long id: listId) {
+            result.add(getOneCardById(id));
+        }
+        return result;
     }
 
     @Override

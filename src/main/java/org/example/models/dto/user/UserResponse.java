@@ -3,9 +3,6 @@ package org.example.models.dto.user;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.UUID;
 
 @Data

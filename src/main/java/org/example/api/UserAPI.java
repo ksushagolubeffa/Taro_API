@@ -13,5 +13,9 @@ public interface UserAPI {
     @GetMapping("/login/{login}/{password}")
     UserResponse login(@PathVariable("login") String login, @PathVariable("password") String password);
 
+    @PostMapping("/update")
+    UserResponse update(@RequestBody UserRequest request);
 
+    @GetMapping("/getUser/{email}")
+    UserResponse findByEmail(@PathVariable("email") String email);
 }

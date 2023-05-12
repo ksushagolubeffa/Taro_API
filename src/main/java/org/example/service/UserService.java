@@ -9,4 +9,7 @@ public interface UserService {
 
     UserResponse doLogin(String login, String password);
 
+    UserResponse doUpdate(UserRequest request);
+
+    UserResponse getByEmail(String email);
 }

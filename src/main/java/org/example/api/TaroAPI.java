@@ -15,6 +15,9 @@ public interface TaroAPI {
     @GetMapping("/{id}")
     TaroResponse getOneCard(@PathVariable("id")Long id);
 
+    @GetMapping("/id/{listId}")
+    List<TaroResponse> getCardsById(@PathVariable("listId")List<Long> listId);
+
     @GetMapping("/getAll")
     List<TaroResponse> getAll();
 

@@ -13,6 +13,7 @@ import javax.persistence.Column;
 @Builder
 public class TaroResponse {
 
+    private Long id;
     private String dignity;
     private String description;
     private String lasso;

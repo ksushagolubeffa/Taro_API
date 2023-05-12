@@ -22,4 +22,14 @@ public class UserController implements UserAPI {
     public UserResponse login(String login, String password) {
         return service.doLogin(login, password);
     }
+
+    @Override
+    public UserResponse update(UserRequest request) {
+        return service.doUpdate(request);
+    }
+
+    @Override
+    public UserResponse findByEmail(String email){
+        return service.getByEmail(email);
+    }
 }

@@ -45,14 +45,12 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserResponse doUpdate(UserRequest request) {
-        UserEntity userEntityByUsernameAndPassword = repository.findUserEntityByUsernameAndPassword(request.getUsername(), request.getPassword());
-        userEntityByUsernameAndPassword.setPassword(request.getPassword());
-        userEntityByUsernameAndPassword.setUsername(request.getUsername());
-        userEntityByUsernameAndPassword.setBirth(request.getBirth());
-        userEntityByUsernameAndPassword.setMale(request.getMale());
-        userEntityByUsernameAndPassword.setEmail(request.getEmail());
-        repository.save(userEntityByUsernameAndPassword);
-        return toResponse.apply(userEntityByUsernameAndPassword);
+        UserEntity user = repository.findUserEntityByEmail(request.getEmail());
+        user.setUsername(request.getUsername());
+        user.setBirth(request.getBirth());
+        user.setMale(request.getMale());
+        repository.save(user);
+        return toResponse.apply(user);
     }
 
     @Override

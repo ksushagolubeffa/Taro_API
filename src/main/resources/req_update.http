@@ -3,7 +3,6 @@ Content-Type: application/json
 
 {
   "username": "ksushagolubeffa",
-  "password": "12345",
   "email": "ksushagolubeffa@mail.ru",
   "birth": "09.12.2004",
   "male": false

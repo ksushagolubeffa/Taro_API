@@ -32,4 +32,13 @@ public class UserController implements UserAPI {
     public UserResponse findByEmail(String email){
         return service.getByEmail(email);
     }
+
+    @Override
+    public UserResponse findOneUser(String zodiac, String email) {
+        UserResponse response = service.getOneUser();
+        while(response.getEmail().equals(email)){
+            response = service.getOneUser();
+        }
+        return response;
+    }
 }

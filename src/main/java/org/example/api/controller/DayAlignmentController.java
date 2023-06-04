@@ -3,9 +3,16 @@ package org.example.api.controller;
 import org.example.api.DayAlignmentAPI;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletResponse;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import java.util.*;
+
+import static javax.print.attribute.standard.ReferenceUriSchemesSupported.HTTP;
 
 @RestController
 public class DayAlignmentController implements DayAlignmentAPI {
@@ -100,7 +107,8 @@ public class DayAlignmentController implements DayAlignmentAPI {
     }
 
     @Override
-    public Map<String, String> getColor() {
+    public Map<String, String> getColor(HttpServletResponse response) {
+        response.setCharacterEncoding("UTF-8");
         HashMap<String, String> colors = reConnectColor();
         Set<String> set = Set.of("Белый", "Черный", "Красный", "Оранжевый", "Желтый", "Зеленый", "Синий", "Голубой ", "Фиолетовый");
         List<String> list = new ArrayList<>(set);
@@ -111,16 +119,18 @@ public class DayAlignmentController implements DayAlignmentAPI {
     }
 
     @Override
-    public Map<Integer, String> getNumber() {
+    public ResponseEntity<Map<Integer, String>> getNumber() {
         HashMap<Integer, String> numbers = reConnectNumber();
         int number = new Random().nextInt(numbers.size());
         String desc = numbers.get(number);
-        return Map.of(number, desc);
+        return ResponseEntity.ok(Map.of(number, desc));
     }
 
     @Override
-    public String getCookie() {
+    public String getCookie() throws UnsupportedEncodingException {
         Set<String> cookies = reConnectCookie();
-        return cookies.stream().findAny().get();
+        String cookie = cookies.stream().findAny().get();
+        return URLEncoder.encode(cookie, java.nio.charset.StandardCharsets.ISO_8859_1.toString());
+//        return new String(cookie.getBytes(StandardCharsets.UTF_8), StandardCharsets.UTF_8);
     }
 }

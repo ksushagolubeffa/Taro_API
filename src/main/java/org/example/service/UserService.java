@@ -12,4 +12,6 @@ public interface UserService {
     UserResponse doUpdate(UserRequest request);
 
     UserResponse getByEmail(String email);
+
+    UserResponse getOneUser();
 }

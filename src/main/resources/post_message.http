@@ -1,0 +1,12 @@
+POST http://localhost:8080/message/save
+Content-Type: application/json
+
+{
+  "sender": "user@mail.ru",
+  "receiver": "ksusha-golubeffa@mail.ru",
+  "text": "Have a good day!"
+
+}
+
+
+###

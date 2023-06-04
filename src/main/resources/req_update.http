@@ -4,6 +4,6 @@ Content-Type: application/json
 {
   "username": "ksushagolubeffa",
   "email": "ksushagolubeffa@mail.ru",
-  "birth": "09.12.2004",
+  "birth": "09.12.2003",
   "male": false
 }

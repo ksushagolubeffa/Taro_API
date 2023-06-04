@@ -8,6 +8,8 @@ import org.example.repository.UserRepository;
 import org.example.service.UserService;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+import java.util.Random;
 import java.util.UUID;
 import java.util.function.Function;
 
@@ -60,5 +62,12 @@ public class UserServiceImpl implements UserService {
         }else {
             return toResponse.apply(repository.findUserEntityByEmail(email));
         }
+    }
+
+    @Override
+    public UserResponse getOneUser() {
+        List<UserEntity> list = repository.findAll();
+        Random random = new Random();
+        return toResponse.apply(list.get(random.nextInt(list.size() -1)));
     }
 }

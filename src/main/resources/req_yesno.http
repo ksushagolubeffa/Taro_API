@@ -1,2 +1,2 @@
-GET http://localhost:8080/random/color
+GET http://localhost:8080/random/cookie
 

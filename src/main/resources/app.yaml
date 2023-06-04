@@ -7,3 +7,6 @@ db:
   driver:
     classname: org.postgresql.Driver
 
+env_variables:
+  JAVA_TOOL_OPTIONS: -Dfile.encoding=UTF-8
+

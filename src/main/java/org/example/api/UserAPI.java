@@ -18,4 +18,7 @@ public interface UserAPI {
 
     @GetMapping("/getUser/{email}")
     UserResponse findByEmail(@PathVariable("email") String email);
+
+    @GetMapping("/get/{zodiac}/{email}")
+    UserResponse findOneUser(@PathVariable("zodiac") String zodiac, @PathVariable("email") String email);
 }

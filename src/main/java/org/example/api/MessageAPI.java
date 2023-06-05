@@ -14,9 +14,9 @@ public interface MessageAPI {
     @PostMapping("/save")
     MessageResponse save(@RequestBody MessageRequest request);
 
-    @GetMapping("/getByReceiver/{receiver}")
-    List<MessageResponse> findByReceiver(@PathVariable("receiver") String receiver);
+//    @GetMapping("/getByReceiver/{receiver}")
+//    List<MessageResponse> findByReceiver(@PathVariable("receiver") String receiver);
 
-    @GetMapping("/getBySender/{sender}")
-    List<MessageResponse> findBySender(@PathVariable("sender") String sender);
+    @GetMapping("/get/{sender}/{receiver}")
+    List<MessageResponse> findBySenderAndReceiver(@PathVariable("sender") String sender, @PathVariable("receiver") String receiver);
 }

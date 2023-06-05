@@ -18,6 +18,7 @@ ext {
 
 dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
+    implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.12.4'
     implementation "org.springframework:spring-context-support:${mvcVersion}"
     implementation "org.springframework:spring-webmvc:${mvcVersion}"
     implementation "org.springframework:spring-context:${mvcVersion}"

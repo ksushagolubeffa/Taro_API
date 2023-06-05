@@ -12,6 +12,7 @@ import org.example.service.MessageService;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Function;
@@ -29,7 +30,8 @@ public class MessageServiceImpl implements MessageService {
             response.add(new MessageResponse(
                     messageEntity.getSender(),
                     messageEntity.getReceiver(),
-                    messageEntity.getText()));
+                    messageEntity.getText(),
+                    messageEntity.getDate()));
         }
         return response;
     }
@@ -41,15 +43,29 @@ public class MessageServiceImpl implements MessageService {
             response.add(new MessageResponse(
                     messageEntity.getSender(),
                     messageEntity.getReceiver(),
-                    messageEntity.getText()));
+                    messageEntity.getText(),
+                    messageEntity.getDate()));
         }
         return response;
     }
 
     @Override
     public MessageResponse saveMessage(MessageRequest request) {
-        MessageEntity entity = new MessageEntity(request.getSender(), request.getReceiver(), request.getText());
+        MessageEntity entity = new MessageEntity(request.getSender(), request.getReceiver(), request.getText(), LocalDateTime.now());
         repository.save(entity);
-        return new MessageResponse(entity.getSender(), entity.getReceiver(), entity.getText());
+        return new MessageResponse(entity.getSender(), entity.getReceiver(), entity.getText(), entity.getDate());
+    }
+
+    @Override
+    public List<MessageResponse> getBySenderAndReceiver(String sender, String receiver) {
+        List<MessageResponse> response = new ArrayList<>();
+        for (MessageEntity messageEntity : repository.findMessageEntitiesBySenderAndReceiver(sender, receiver)) {
+            response.add(new MessageResponse(
+                    messageEntity.getSender(),
+                    messageEntity.getReceiver(),
+                    messageEntity.getText(),
+                    messageEntity.getDate()));
+        }
+        return response;
     }
 }

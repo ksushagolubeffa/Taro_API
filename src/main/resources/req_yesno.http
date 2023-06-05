@@ -1,2 +1,2 @@
-GET http://localhost:8080/random/cookie
+GET http://localhost:8080/random/yes
 

@@ -13,4 +13,6 @@ public interface MessageService {
     List<MessageResponse> getByReceiver(String receiver);
 
     MessageResponse saveMessage(MessageRequest request);
+
+    List<MessageResponse> getBySenderAndReceiver(String sender, String receiver);
 }

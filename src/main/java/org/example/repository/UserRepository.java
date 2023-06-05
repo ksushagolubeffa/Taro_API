@@ -3,7 +3,9 @@ package org.example.repository;
 import org.example.models.UserEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
+import java.util.List;
 import java.util.UUID;
 
 public interface UserRepository extends JpaRepository<UserEntity, UUID> {
@@ -17,6 +19,6 @@ public interface UserRepository extends JpaRepository<UserEntity, UUID> {
 
     UserEntity findUserEntityByEmail(String email);
 
-//    @Query(value = "SELECT u FROM u_table ORDER BY RAND() LIMIT 1", nativeQuery = true)
-//    UserEntity findOneUser();
+    @Query("SELECT u FROM UserEntity u where u.email <> :email")
+    List<UserEntity> findUsers(@Param("email") String email);
 }

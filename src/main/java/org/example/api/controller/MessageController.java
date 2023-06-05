@@ -21,14 +21,14 @@ public class MessageController implements MessageAPI {
         return service.saveMessage(request);
     }
 
-    @Override
-    public List<MessageResponse> findByReceiver(String receiver) {
-        return service.getByReceiver(receiver);
-    }
+//    @Override
+//    public List<MessageResponse> findByReceiver(String receiver) {
+//        return service.getByReceiver(receiver);
+//    }
 
     @Override
-    public List<MessageResponse> findBySender(String sender) {
-        return service.getBySender(sender);
+    public List<MessageResponse> findBySenderAndReceiver(String sender, String receiver) {
+        return service.getBySenderAndReceiver(sender, receiver);
     }
 
 }

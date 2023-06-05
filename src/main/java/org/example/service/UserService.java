@@ -13,5 +13,5 @@ public interface UserService {
 
     UserResponse getByEmail(String email);
 
-    UserResponse getOneUser();
+    UserResponse getOneUser(String email);
 }

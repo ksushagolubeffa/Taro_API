@@ -35,10 +35,6 @@ public class UserController implements UserAPI {
 
     @Override
     public UserResponse findOneUser(String zodiac, String email) {
-        UserResponse response = service.getOneUser();
-        while(response.getEmail().equals(email)){
-            response = service.getOneUser();
-        }
-        return response;
+        return service.getOneUser(email);
     }
 }

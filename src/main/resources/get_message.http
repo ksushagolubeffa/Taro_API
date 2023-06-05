@@ -1,4 +1,4 @@
-GET http://localhost:8080/message/getByReceiver/user@mail.ru
+GET http://localhost:8080/message/get/user@mail.ru/ksusha-golubeffa@mail.ru
 
 
 ###

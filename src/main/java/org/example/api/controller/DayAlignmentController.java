@@ -4,9 +4,12 @@ import org.example.api.DayAlignmentAPI;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
@@ -133,4 +136,15 @@ public class DayAlignmentController implements DayAlignmentAPI {
         return URLEncoder.encode(cookie, java.nio.charset.StandardCharsets.ISO_8859_1.toString());
 //        return new String(cookie.getBytes(StandardCharsets.UTF_8), StandardCharsets.UTF_8);
     }
+
+    @GetMapping("/yes")
+    public void getYesNo(HttpServletResponse response) throws IOException {
+        response.setContentType("text/plain;charset=UTF-8");
+        response.setCharacterEncoding("UTF-8");
+        Set<String> alignment = reConnectYesNo();
+        String message = alignment.stream().findAny().get();
+        PrintWriter out = response.getWriter();
+        out.println("The answer is: " + message);
+    }
+
 }

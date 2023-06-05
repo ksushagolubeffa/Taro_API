@@ -65,9 +65,13 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserResponse getOneUser() {
-        List<UserEntity> list = repository.findAll();
+    public UserResponse getOneUser(String email) {
+        List<UserEntity> list = repository.findUsers(email);
         Random random = new Random();
-        return toResponse.apply(list.get(random.nextInt(list.size() -1)));
+        int index = 0;
+        if(list.size() > 1){
+            index = random.nextInt(list.size() -1);
+        }
+        return toResponse.apply(list.get(index));
     }
 }

@@ -1,13 +1,11 @@
 package org.example.models;
 
-import ch.qos.logback.classic.pattern.DateConverter;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Getter
@@ -39,10 +37,5 @@ public class MessageEntity {
     public LocalDateTime getDate() {
         return date;
     }
-
-//    @PrePersist
-//    private void onCreate() {
-//        date = LocalDateTime.now();
-//    }
 
 }

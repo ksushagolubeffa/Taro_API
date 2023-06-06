@@ -12,15 +12,15 @@ import java.util.Map;
 @RequestMapping("/random")
 public interface DayAlignmentAPI {
 
-    @GetMapping("/yesno")
+    @GetMapping("/yes_no")
     String getYesNo();
 
-    @GetMapping("/color")
+    @GetMapping("/colors")
     Map<String, String> getColor(HttpServletResponse response) throws IOException;
 
-    @GetMapping("/number")
+    @GetMapping("/numbers")
     ResponseEntity<Map<Integer, String>> getNumber();
 
-    @GetMapping("/cookie")
+    @GetMapping("/cookies")
     String getCookie() throws UnsupportedEncodingException;
 }
